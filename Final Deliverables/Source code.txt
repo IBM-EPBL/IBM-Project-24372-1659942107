@@ -1,0 +1,19 @@
+int gassensor = 0;
+
+void setup()
+{
+  pinMode(A0, INPUT);
+  pinMode(12, OUTPUT);
+  pinMode(13, OUTPUT);
+}
+
+void loop()
+{
+  gassensor = analogRead(A0);
+  if (gassensor >= 250) {
+    digitalWrite(12, HIGH);
+    tone(13, 523, 1000); // play tone 60 (C5 = 523 Hz)
+    delay(1000); // Wait for 1000 millisecond(s)
+    digitalWrite(12, LOW);
+  }
+}
